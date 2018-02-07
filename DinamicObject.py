@@ -6,7 +6,7 @@ class DinamicObject(Object.Object):
         self.OA = {}
         self.LVL = 0
         self.UPAttributes = {}
-        self.speed = None
+        self.Speed = None
         self.HP = None
         self.MP = None
         self.Def = None

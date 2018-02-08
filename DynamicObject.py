@@ -1,6 +1,6 @@
 import Object
 
-class DinamicObject(Object.Object):
+class DynamicObject(Object.Object):
     def __init__(self):
         Object.Object.__init__(self)
         self.OA = {}

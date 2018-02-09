@@ -12,6 +12,10 @@ while 1:
         if event.type == pygame.QUIT:
             pygame.display.quit()
             sys.exit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:  
+                mouse_pos = event.pos
+                core.Hero.ActiveIndicator = 1             
     
     for line in core.loc.field:
         for obj in line:

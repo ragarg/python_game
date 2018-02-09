@@ -13,5 +13,10 @@ class Core:
                 obj.x = x
                 obj.y = y
                 self.loc.add_object(obj)
-            
+            else:
+                self.loc.del_object(obj)
+                obj.x = (obj.speed**2/(x**2/y**2) + 1)**0.5
+                obj.y = (obj.speed**2/(y**2/x**2) + 1)**0.5
+                self.loc.add_object(obj)
+                
     

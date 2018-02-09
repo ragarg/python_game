@@ -1,7 +1,7 @@
 class Object:
     def __init__(self, x, y, image):
-        SetCoordinates(x, y)
-        SetImage(image)
+        self.SetCoordinates(x, y)
+        self.SetImage(image)
         self.roomID = 0
 
     def SetImage(self, image):

@@ -1,20 +1,9 @@
 import Object
 
-class DynamicObject(Object.Object):
-    def __init__(self):
-        Object.Object.__init__(self)
-        self.OA = {}
-        self.LVL = 0
-        self.UPAttributes = {}
-        self.Speed = None
-        self.HP = None
-        self.MP = None
-        self.Def = None
-        self.Str = None
-        self.Agi = None
-        self.Int = None
-        self.Atk = None
-        self.MAtk = None
+class DinamicObject(Object.Object):
+    def __init__(self, level, x, y, image, ObjectAtrtibutes):
+        Object.Object.__init__(x, y, image)
+        BasicAttributes(self, self.LVL, self.OA)
 
     def BasicAttributes(self, level, ObjectAtrtibutes):
         self.UPAttributes = ObjectAtrtibutes[UPAttributes]

@@ -4,6 +4,7 @@ class DinamicObject(Object.Object):
     def __init__(self, level, x, y, image, ObjectAtrtibutes):
         Object.Object.__init__(x, y, image)
         self.BasicAttributes(self, self.LVL, self.OA)
+        self.ActiveIndicator = 0
 
     def BasicAttributes(self, level, ObjectAtrtibutes):
         self.UPAttributes = ObjectAtrtibutes[UPAttributes]

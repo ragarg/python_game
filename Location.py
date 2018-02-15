@@ -8,7 +8,8 @@ class Location:
         for obj in locality_object:
             self.add_locality_object(obj)
         for obj in other_object:
-            self.add_other_object(obj)    
+            self.add_other_object(obj)   
+        self.graf = LocationGraf(self)    
 
     def add_locality_object(self, obj):
         self.field[obj.x][obj.y][0] = obj

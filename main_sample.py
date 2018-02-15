@@ -2,7 +2,6 @@ import sys, pygame
 import Core
 
 pygame.init()
-print("hi")
 
 size = width, height = 1440, 1440
 screen = pygame.display.set_mode(size)

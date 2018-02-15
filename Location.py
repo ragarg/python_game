@@ -1,5 +1,6 @@
 import Wall
 import Floor
+from LocationGraf import  LocationGraf
 
 class Location:
     def __init__(self, size_x, size_y, locality_object, other_object):
@@ -8,8 +9,8 @@ class Location:
         for obj in locality_object:
             self.add_locality_object(obj)
         for obj in other_object:
-            self.add_other_object(obj)   
-        self.graf = LocationGraf(self)    
+            self.add_other_object(obj)
+        self.graf = LocationGraf(self)
 
     def add_locality_object(self, obj):
         self.field[obj.x][obj.y][0] = obj
@@ -18,7 +19,7 @@ class Location:
         self.field[obj.x][obj.y][1] = obj
 
     def get_location(self, coordinates):
-        return self.field[coordinates[0]][coordinates[1]])
+        return self.field[coordinates[0]][coordinates[1]]
 
     def del_locality_object(self, obj):
         self.field[obj.x][obj.y][0] = None

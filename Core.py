@@ -13,10 +13,10 @@ class Core:
         self.move_hero()
 
     def move_object(self, obj, x, y):
-        self.loc.add_other_object(obj)
+        self.loc.del_other_object(obj)
         obj.x = x
         obj.y = y
-        self.loc.del_other_object(obj)
+        self.loc.add_other_object(obj)
 
     def update_way(self, goal):
         if type(self.loc.field[goal[0]  // 24][goal[1]  // 24][0]) != Wall:

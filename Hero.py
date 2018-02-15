@@ -1,16 +1,11 @@
-import DinamicObject
-from Base import LEUB
+import Object
 
-class Hero:
-    def __init__(self, x, y, image, ObjectAtrtibutes):
-        DinamicObject.DinamicObject.__init__(1, x, y, image, ObjectAtrtibutes)
-        self.EXP = 0
+
+class Hero(Object.Object):
+    def __init__(self, x, y, image):
+        Object.Object.__init__(self, x, y, image)
+        self.way = []
         
     def customization(self, image):
         self.image  =  image
 
-    def UPEXP(self):
-        if self.EXP == LEUB[self.LVL]:
-            self.EXP = 0
-            self.LVL += 1
-            self.LevelUP()

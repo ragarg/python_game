@@ -13,13 +13,17 @@ while 1:
             pygame.display.quit()
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 1:  
+            if event.button == 1:
                 mouse_pos = event.pos
-                core.Hero.ActiveIndicator = 1             
+                core.update_way(mouse_pos)
+
+    core.update_field()
     
     for line in core.loc.field:
         for obj in line:
-            if not obj is None:
-                screen.blit(obj.image, (obj.x, obj.y * 24))
+            if not obj[0] is None:
+                screen.blit(obj[0].image, (obj[0].x * 24, obj[0].y * 24))
+            if not obj[1] is None:
+                screen.blit(obj[1].image, (obj[1].x * 24, obj[1].y * 24))
     
     pygame.display.flip()

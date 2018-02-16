@@ -12,4 +12,5 @@ for i in range(100):
 for i in range(10, 14):
     for j in range(10, 14):
         a.append(Wall(i, j, dirt_image))
-location_sample = Location.Location(100, 100, a, [Hero])
+        
+location_sample = Location.Location(100, 100, a, [Hero, Dog1, Dog2])

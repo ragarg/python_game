@@ -3,7 +3,7 @@ import Core
 
 pygame.init()
 
-size = width, height = 1440, 1440
+size = width, height = 900, 600
 screen = pygame.display.set_mode(size)
 core = Core.Core()
 while 1:

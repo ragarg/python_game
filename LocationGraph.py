@@ -1,6 +1,7 @@
 import Location
 import heapq
 from Floor import Floor
+from Warp import Warp
 
 
 class PriorityQueue:
@@ -47,26 +48,26 @@ class LocationGraph:
             for y in range(parent.size[1]):
 
                 if x != 0:
-                    if type(parent.field[x - 1][y][0]) == Floor:
+                    if parent.field[x - 1][y][0].patency == 1:
                         self.graph[x][y].add_new_neighbours(self.graph[x - 1][y])
                     if y != 0:
-                        if type(parent.field[x - 1][y - 1][0]) == Floor:
+                        if parent.field[x - 1][y - 1][0].patency == 1:
                             self.graph[x][y].add_new_neighbours(self.graph[x - 1][y - 1])
-                        if  type(parent.field[x][y - 1][0]) == Floor:
+                        if  parent.field[x][y - 1][0].patency == 1:
                             self.graph[x][y].add_new_neighbours(self.graph[x][y - 1])
                     if y != parent.size[1] - 1:
-                        if type(parent.field[x - 1][y + 1][0]) == Floor:
+                        if parent.field[x - 1][y + 1][0].patency == 1:
                             self.graph[x][y].add_new_neighbours(self.graph[x - 1][y + 1])
-                        if type(parent.field[x][y + 1][0]) == Floor:
+                        if parent.field[x][y + 1][0].patency == 1:
                             self.graph[x][y].add_new_neighbours(self.graph[x][y + 1])
                 if x != parent.size[0] - 1:
-                    if type(parent.field[x + 1][y][0]) == Floor:
+                    if parent.field[x + 1][y][0].patency == 1:
                         self.graph[x][y].add_new_neighbours(self.graph[x + 1][y])
                     if y != 0:
-                        if type(parent.field[x + 1][y -1][0]) == Floor:
+                        if parent.field[x + 1][y -1][0].patency == 1:
                             self.graph[x][y].add_new_neighbours(self.graph[x + 1][y - 1])
                     if y != parent.size[1] - 1:
-                        if type(parent.field[x + 1][y + 1][0]) == Floor:
+                        if parent.field[x + 1][y + 1][0].patency == 1:
                             self.graph[x][y].add_new_neighbours(self.graph[x + 1][y + 1])
 
     def cost(self, first, second):
@@ -116,3 +117,4 @@ class LocationGraph:
             #else:
                 #print(ob, ": ", None)
         return came_from
+

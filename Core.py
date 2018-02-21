@@ -1,17 +1,47 @@
 from Locations import *
 from Wall import Wall
-from Objects import Hero
+from Objects import Hero, mobs
 
 class Core:
     def __init__(self):
-        self.locations = [location_sample]
-        self.current_location = 0
-        self.loc = self.locations[self.current_location]
-        self.Hero = Hero
+        Hero.x = 0
+        Hero.y = 0
+
+        self.loc = locations[0]
         self.ai_list = []
 
     def update_field(self):
-        self.move_hero()
+        if type(self.loc.field[Hero.x][Hero.y][0]) == Warp:
+
+            self.update_location(self.loc.field[Hero.x][Hero.y][0].link)
+            self.move_object(Hero, Hero.x, Hero.y)
+
+            cells = self.loc.field
+
+
+        else:
+
+            cells = []
+            if Hero.way == []:
+                cells.append(self.loc.field[Hero.x][Hero.y])
+            else:
+                cells.append([self.loc.field[Hero.x][Hero.y][0], None])
+                self.move_hero()
+                cells.append(self.loc.field[Hero.x][Hero.y])
+            for mob in mobs:
+                cells.append([self.loc.field[mob.x][mob.y][0], None])
+                if mob.way == []:
+                    cells.append(self.loc.field[mob.x][mob.y])
+            #self.move_mob(mob)
+            #cells.append(self.loc.field[mob.x][mob.y])
+            cells = [cells]
+        return cells
+
+    def update_location(self, link):
+        self.loc.field[Hero.x][Hero.y][1] = None
+        self.loc = locations[link[0]]
+        Hero.x = link[1][0]
+        Hero.y = link[1][1]
 
     def move_object(self, obj, x, y):
         self.loc.del_other_object(obj)
@@ -24,16 +54,12 @@ class Core:
             Hero.way = self.loc.graph.way(self.loc.graph.graph[Hero.x][Hero.y], self.loc.graph.graph[goal[0] // 24][goal[1] //24])
 
     def move_hero(self):
-        if Hero.way == []:
-            Hero.way.append(self.loc.graph.graph[Hero.x][Hero.y])
-
         point = Hero.way.pop()
         
         #if self.loc.field[point.x][point.y][1] != None:
-            #self.update_way(self, (Hero.way[0].x, Hero.way[0].y)) Тут должен быть перерасчет пути в колизии, но он пока падает
+            #self.update_way(self, (Hero.way[0].x, Hero.way[0].y)) 
             #self.move_hero(self)
             #return
         self.move_object(Hero, point.x, point.y)
-
 
     
